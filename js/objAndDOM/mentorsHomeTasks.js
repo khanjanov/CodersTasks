@@ -1,7 +1,7 @@
 //! 07.02.24
 //TODO şirkətin illik gəliri >1mln vəz yaxşı, 300 - 500 stabil, <300 iflas
 
-const k = 10 ** 3;
+/* const k = 10 ** 3;
 const mln = 10 ** 6;
 
 function Company(a) {
@@ -19,6 +19,6 @@ function Company(a) {
   };
 }
 
-const Genco = new Company(1 * mln);
+const Genco = new Company(1 * mln); */
 
 console.log(Genco.checkStatus());
