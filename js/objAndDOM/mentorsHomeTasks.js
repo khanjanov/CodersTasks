@@ -19,6 +19,6 @@ function Company(a) {
   };
 }
 
-const Genco = new Company(1 * mln); */
+const Genco = new Company(1 * mln);
 
-console.log(Genco.checkStatus());
+console.log(Genco.checkStatus()); */
