@@ -81,7 +81,7 @@ BankAccount.accountNumber = "adsfdg"
 BankAccount.falan=5
 console.log(BankAccount) */
 
-//! 06.02.24 online mentor
+//! 06.02.24 online mentor task
 
 /* const user = {
   name: "Elgun",
@@ -106,4 +106,19 @@ console.log(user.yearIncome());//12000
 console.log(user.yearIncomeAvans(500));//1800
 user.yearIncomeCompression();//6000 */
 
+//! 08.01.24
+//? +994 50 123 45 67 number check
+// /^[+][(]?[0-9]{3}[)]?[-\s.]?[0-9]{2}[-\s.]?[0-9]{3}[-\s.]?[0-9]{2}[-\s.]?[0-9]{2}$/im
 
+//? check first letter is capital or not
+
+function upper_case(str) {
+  regexp = /^[A-Z]/;
+  if (regexp.test(str)) {
+    console.log("String's first character is uppercase");
+  } else {
+    console.log("String's first character is not uppercase");
+  }
+}
+upper_case("Abcd");
+upper_case("abcd");
