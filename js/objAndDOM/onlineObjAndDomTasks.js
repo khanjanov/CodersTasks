@@ -123,10 +123,11 @@ user.yearIncomeCompression();//6000 */
 upper_case("Abcd");
 upper_case("abcd"); */
 
-//! 09.01.24
+//! 09.01.24 online mentor tasks
+
 //TODO create list with js
 
-function createList() {
+/* function createList() {
   let fruits = ["apple", "peach", "pineapple", "strawberry"];
   let b = document.querySelector("body");
   let ul = document.createElement("ul");
@@ -137,7 +138,17 @@ function createList() {
     li.append(`${fruits[i]}`);
     ul.appendChild(li);
     b.appendChild(ul);
-    console.log(li);
   }
 }
-createList();
+createList(); */
+
+//TODO CroCoder logo
+function createCro() {
+  let b = document.querySelector("body");
+  let heading1 = document.createElement("h1");
+  let p = document.createElement("img");
+  heading1.innerText = "CroCoder logo :";
+  p.src = "assets/pics/icon.png";
+  b.append(heading1, p);
+}
+createCro();
