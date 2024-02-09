@@ -143,7 +143,8 @@ upper_case("abcd"); */
 createList(); */
 
 //TODO CroCoder logo
-function createCro() {
+
+/* function createCro() {
   let b = document.querySelector("body");
   let heading1 = document.createElement("h1");
   let p = document.createElement("img");
@@ -151,4 +152,20 @@ function createCro() {
   p.src = "assets/pics/icon.png";
   b.append(heading1, p);
 }
-createCro();
+createCro(); */
+
+//TODO create reversed list
+function createReversedList() {
+  let fruits = ["apple", "peach", "pineapple", "strawberry"];
+  let b = document.querySelector("body");
+  let ul = document.createElement("ul");
+  for (i = fruits.length - 1; i >= 0; i--) {
+    let li = document.createElement("li");
+    li.style.color = "teal";
+    li.style.listStyleType = "circle";
+    li.append(`${fruits[i]}`);
+    ul.appendChild(li);
+    b.appendChild(ul);
+  }
+}
+createReversedList();
