@@ -123,3 +123,21 @@ user.yearIncomeCompression();//6000 */
 upper_case("Abcd");
 upper_case("abcd"); */
 
+//! 09.01.24
+//TODO create list with js
+
+function createList() {
+  let fruits = ["apple", "peach", "pineapple", "strawberry"];
+  let b = document.querySelector("body");
+  let ul = document.createElement("ul");
+  for (i = 0; i < fruits.length; i++) {
+    let li = document.createElement("li");
+    li.style.color = "teal";
+    li.style.listStyleType = "circle";
+    li.append(`${fruits[i]}`);
+    ul.appendChild(li);
+    b.appendChild(ul);
+    console.log(li);
+  }
+}
+createList();
