@@ -90,7 +90,10 @@ function createTodo(todo) {
     "style",
     "border:none;border-radius:8px;padding: 4px 8px;color:red;"
   );
-  deleteBtn.addEventListener("click", () => li.remove());
+  deleteBtn.addEventListener("click", (e) => {
+    alert("do you wanna delete this permanently", () => li.remove());
+    e.stopPropagation();
+  });
   doneBtn.addEventListener("click", () => {
     li.style.textDecoration = "line-through";
   });
