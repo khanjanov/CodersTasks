@@ -91,8 +91,9 @@ function createTodo(todo) {
     "border:none;border-radius:8px;padding: 4px 8px;color:red;"
   );
   deleteBtn.addEventListener("click", (e) => {
-    alert("do you wanna delete this permanently", () => li.remove());
     e.stopPropagation();
+    alert("do you wanna delete this todo permanently?");
+    li.remove();
   });
   doneBtn.addEventListener("click", () => {
     li.style.textDecoration = "line-through";
@@ -102,4 +103,5 @@ function createTodo(todo) {
   todoContainer.appendChild(todoList);
   inpt.value = "";
 }
+
 addBtn.addEventListener("click", addToDo);
