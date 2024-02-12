@@ -41,7 +41,7 @@ inpt.setAttribute(
 addBtn.innerHTML = `<i class="far fa-plus-square"></i>`;
 addBtn.setAttribute(
   "style",
-  "color:green;border:none;border-radius:8px;display: flex;justify-content: center;align-items: center;padding: 6px 12px"
+  "color:green;border:none;border-radius:8px;display: flex;justify-content: center;align-items: center;padding: 6px 12px;cursor:pointer;"
 );
 heading1.textContent = "TO DO";
 heading1.style.color = "white";
@@ -60,8 +60,7 @@ wrapper.append(header, form, todoContainer);
 container.append(wrapper);
 b.append(container);
 
-function addToDo(a) {
-  a.preventDefault();
+function addToDo() {
   let todo = inpt.value;
   if (todo !== "") {
     createTodo(todo);
@@ -82,13 +81,13 @@ function createTodo(todo) {
   deleteBtn.innerHTML = `<i class="far fa-trash-alt"></i>`;
   deleteBtn.setAttribute(
     "style",
-    "border:none;border-radius:8px;padding: 4px 8px;color:green;"
+    "border:none;border-radius:8px;padding: 4px 8px;color:green;cursor:pointer;"
   );
   const doneBtn = document.createElement("button");
   doneBtn.innerHTML = `<i class="far fa-check-square"></i>`;
   doneBtn.setAttribute(
     "style",
-    "border:none;border-radius:8px;padding: 4px 8px;color:red;"
+    "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;"
   );
   deleteBtn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -105,3 +104,8 @@ function createTodo(todo) {
 }
 
 addBtn.addEventListener("click", addToDo);
+inpt.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    addToDo();
+  }
+});
