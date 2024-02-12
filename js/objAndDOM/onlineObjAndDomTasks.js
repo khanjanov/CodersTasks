@@ -155,7 +155,7 @@ createList(); */
 createCro(); */
 
 //TODO create reversed list
-function createReversedList() {
+/* function createReversedList() {
   let fruits = ["apple", "peach", "pineapple", "strawberry"];
   let b = document.querySelector("body");
   let ul = document.createElement("ul");
@@ -168,4 +168,4 @@ function createReversedList() {
     b.appendChild(ul);
   }
 }
-createReversedList();
+createReversedList(); */
