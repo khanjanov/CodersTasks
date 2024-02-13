@@ -6,6 +6,7 @@ let heading1 = document.createElement("h1");
 let form = document.createElement("div");
 let inpt = document.createElement("input");
 let addBtn = document.createElement("button");
+let deleteAllTodoBtn = document.createElement("button");
 let todoContainer = document.createElement("div");
 let todoList = document.createElement("ul");
 let link = document.createElement("link");
@@ -43,6 +44,11 @@ addBtn.setAttribute(
   "style",
   "color:green;border:none;border-radius:8px;display: flex;justify-content: center;align-items: center;padding: 6px 12px;cursor:pointer;"
 );
+deleteAllTodoBtn.innerHTML = `<i class="far fa-trash-alt"></i>`;
+deleteAllTodoBtn.setAttribute(
+  "style",
+  "color:red;border:none;border-radius:8px;display: flex;justify-content: center;align-items: center;padding: 6px 12px;cursor:pointer;"
+);
 heading1.textContent = "TO DO";
 heading1.style.color = "white";
 header.append(heading1);
@@ -50,7 +56,7 @@ todoList.setAttribute(
   "style",
   "display: flex;flex-direction: column;justify-content: center;align-items: center;gap:8px;padding:0;"
 );
-form.append(inpt, addBtn);
+form.append(inpt, addBtn, deleteAllTodoBtn);
 todoContainer.append(todoList);
 todoContainer.setAttribute(
   "style",
@@ -89,6 +95,12 @@ function createTodo(todo) {
     "style",
     "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;"
   );
+  const editBtn = document.createElement("button");
+  editBtn.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
+  editBtn.setAttribute(
+    "style",
+    "border:none;border-radius:8px;padding: 4px 8px;color:skyblue;cursor:pointer;"
+  );
   deleteBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     alert("do you wanna delete this todo permanently?");
@@ -97,7 +109,12 @@ function createTodo(todo) {
   doneBtn.addEventListener("click", () => {
     li.style.textDecoration = "line-through";
   });
-  li.append(doneBtn, deleteBtn);
+  editBtn.addEventListener("click", () => {
+    let editInpt = prompt("type to replace todo");
+    li.innerText = editInpt;
+    li.append(editBtn, doneBtn, deleteBtn);
+  });
+  li.append(editBtn, doneBtn, deleteBtn);
   todoList.append(li);
   todoContainer.appendChild(todoList);
   inpt.value = "";
@@ -108,4 +125,9 @@ inpt.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     addToDo();
   }
+});
+deleteAllTodoBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  alert("do you wanna delete all todos permanently?");
+  todoContainer.remove();
 });
