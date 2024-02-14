@@ -1,4 +1,4 @@
-let b = document.querySelector("body");
+/* let b = document.querySelector("body");
 let container = document.createElement("div");
 let wrapper = document.createElement("div");
 let header = document.createElement("header");
@@ -131,3 +131,4 @@ deleteAllTodoBtn.addEventListener("click", (e) => {
   alert("do you wanna delete all todos permanently?");
   todoContainer.remove();
 });
+ */

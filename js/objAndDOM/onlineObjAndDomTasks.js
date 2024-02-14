@@ -169,3 +169,72 @@ createCro(); */
   }
 }
 createReversedList(); */
+
+//! 14.02.24 online mentor taks
+
+//TODO zoominout
+
+let b = document.querySelector("body");
+b.setAttribute(
+  "style",
+  "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:50px;"
+);
+
+function zoomInOut() {
+  let a = document.createElement("div");
+  a.setAttribute(
+    "style",
+    "width:40px;height:40px;border-radius: 4px;background-color:skyblue;"
+  );
+  b.append(a);
+  a.addEventListener("mouseenter", () => {
+    a.style.transform = "scale(1.2)";
+    a.style.transition = "linear 0.5s";
+  });
+  a.addEventListener("mouseout", () => {
+    a.style.transform = "scale(1)";
+  });
+}
+zoomInOut();
+
+//TODO change color by clicking
+
+function changeColor() {
+  let a = document.createElement("div");
+  a.setAttribute(
+    "style",
+    "width:40px;height:40px;border-radius: 4px;background-color:skyblue;margin-top:20px;"
+  );
+  b.append(a);
+  a.addEventListener("click", () => {
+    a.style.backgroundColor = "yellow";
+    setTimeout(() => {
+      a.style.backgroundColor = "skyblue";
+      a.style.transition = "linear 0.5s";
+    }, 1200);
+  });
+}
+setTimeout(changeColor(), 1000);
+
+//TODO move element left or right with keyboard arrows
+
+function move() {
+  let a = document.createElement("div");
+  a.setAttribute(
+    "style",
+    "width:40px;height:40px;border-radius: 4px;background-color:skyblue; margin-top: 20px"
+  );
+  b.append(a);
+  let c = 0;
+  document.addEventListener("keydown", (e) => {
+    let d = 100;
+    if (e.key === "ArrowRight") {
+      c += d;
+    }
+    if (e.key === "ArrowLeft") {
+      c -= d;
+    }
+    a.style.transform = `translateX(${c}%)`;
+  });
+}
+move();
