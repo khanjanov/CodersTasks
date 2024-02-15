@@ -174,7 +174,7 @@ createReversedList(); */
 
 //TODO zoominout
 
-let b = document.querySelector("body");
+/* let b = document.querySelector("body");
 b.setAttribute(
   "style",
   "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:50px;"
@@ -238,3 +238,96 @@ function move() {
   });
 }
 move();
+ */
+
+//! 15.02.24 online teacher task
+
+//TODO create simple form
+
+let b = document.querySelector("body");
+
+style(b,"style","display:flex;flex-direction:column;gap:12px;justify-content:center;align-items:center;background-color:cyan;");
+let form = createElement("form");
+form.innerHTML = `<form >
+<label for="firstName">First name:</label><br>
+<input type="text" id="firstName" name="firstName" placeholder="type here..." required><br><br>
+<label for="lastName">Last name:</label><br>
+<input type="text" id="lastName" name="lastName" placeholder="type here..." required>
+<br><br>
+<label for="genders">Gender:</label>
+<select id="genders" name="genders">
+  <option value="men">Men</option>
+  <option value="women">Women</option>
+</select>
+<br><br>
+<label for="paymentMethod">Choose payment method</label><br>
+<input type="radio" id="cash" name="paymentMethod" value="cash">
+<label for="cash">cash</label><br>
+<input type="radio" id="card" name="paymentMethod" value="card">
+<label for="card">card</label>
+<br><br>
+<label for="shippingMethod">Choose shipping method</label><br>
+<input type="radio" id="delivery" name="shippingMethod" value="delivery">
+<label for="delivery">delivery</label><br>
+<input type="radio" id="inStore" name="shippingMethod" value="inStore">
+<label for="inStore">in store</label>
+</form>`;
+let submitBtn = createElement("button");
+submitBtn.innerHTML = `<button type="submit">Submit</button>`;
+b.append(form, submitBtn);
+
+submitBtn.addEventListener("click", submitForm);
+
+let client = {
+  fullname: String,
+  gender: String,
+  payment: String,
+  shipping: String,
+};
+
+function submitForm() {
+  client.fullname = `${firstName.value} ${lastName.value}`;
+  client.gender = genders.value;
+  if (cash.checked) {
+    client.payment = cash.value;
+  } else {
+    client.payment = card.value;
+  }
+  if (delivery.checked) {
+    function getAdress() {
+      let adress = prompt("enter adress");
+      client.shipping = `send to ${adress}`;
+    }
+    getAdress();
+  } else {
+    client.shipping = inStore.value;
+  }
+
+  createClientCard(client);
+}
+
+function createClientCard(client) {
+  let keys = Object.keys(client);
+  let values = Object.values(client);
+  let list = createElement("ul");
+  style(list, "style", "list-style-type:none;margin:0;padding:0;");
+  for (i = 0; i < keys.length; i++) {
+    let listItem = createElement("li");
+    listItem.textContent = `${keys[i]} : ${values[i]}`;
+    list.append(listItem);
+  }
+  let heading2 = createElement("h2");
+  heading2.innerText = `Order details`;
+  b.append(heading2, list);
+}
+
+function style(a, b, c) {
+  return a.setAttribute(`${b}`, ` ${c}`);
+}
+function createElement(a) {
+  return document.createElement(`${a}`);
+}
+
+style(document.querySelector("#lastName"), "style", "border-radius:8px;");
+style(document.querySelector("#firstName"), "style", "border-radius:8px;");
+style(document.querySelector("#genders"), "style", "border-radius:8px;");
