@@ -244,7 +244,7 @@ move();
 
 //TODO create simple form
 
-let b = document.querySelector("body");
+/* let b = document.querySelector("body");
 
 style(b,"style","display:flex;flex-direction:column;gap:12px;justify-content:center;align-items:center;background-color:cyan;");
 let form = createElement("form");
@@ -330,4 +330,96 @@ function createElement(a) {
 
 style(document.querySelector("#lastName"), "style", "border-radius:8px;");
 style(document.querySelector("#firstName"), "style", "border-radius:8px;");
-style(document.querySelector("#genders"), "style", "border-radius:8px;");
+style(document.querySelector("#genders"), "style", "border-radius:8px;"); */
+
+//! 19.02.24 mentor online task
+
+//TODO inputumuz olacaq ad, soyad, sirket adi, aldiginiz maas, 2 radio button, 1-i front end, backend, 2ci ise remote,ofis.
+
+/* let b = document.querySelector("body");
+
+style(
+  b,
+  "style",
+  "display:flex;flex-direction:column;gap:12px;justify-content:center;align-items:center;background-color:cyan;"
+);
+let form = createElement("form");
+form.innerHTML = `
+<form >
+<label for="firstName">First name:</label><br>
+<input type="text" id="firstName" name="firstName" placeholder="type here..."><br><br>
+<label for="lastName">Last name:</label><br>
+<input type="text" id="lastName" name="lastName" placeholder="type here...">
+<br><br>
+<label for="company">Company name:</label><br>
+<input type="text" id="company" name="company" placeholder="type here...">
+<br><br>
+<label for="salary">Salary</label><br>
+<input type="number" id="salary" name="salary" placeholder="type here...">
+<br><br>
+<label for="profession">Choose profession</label><br>
+<input type="radio" id="frontEnd" name="profession" value="frontEnd">
+<label for="frontEnd">frontEnd</label><br>
+<input type="radio" id="backEnd" name="profession" value="backEnd">
+<label for="backEnd">backEnd</label>
+<br><br>
+<label for="workType">Choose work type</label><br>
+<input type="radio" id="remote" name="workType" value="remote">
+<label for="remote">remote</label><br>
+<input type="radio" id="office" name="workType" value="office">
+<label for="office">office</label>
+<br><br>
+</form>`;
+let submitBtn = createElement("button");
+submitBtn.innerHTML = `<button type="submit">Submit</button>`;
+b.append(form, submitBtn);
+
+submitBtn.addEventListener("click", submitForm);
+
+let employee = {
+  fullname: String,
+  company: String,
+  salary: Number,
+  profession: String,
+  workType: String,
+};
+
+function submitForm() {
+  employee.fullname = `${firstName.value} ${lastName.value}`;
+  employee.company = company.value;
+  employee.salary = salary.value;
+  if (frontEnd.checked) {
+    employee.profession = frontEnd.value;
+  } else {
+    employee.profession = backEnd.value;
+  }
+  if (remote.checked) {
+    employee.workType = remote.value;
+  } else {
+    employee.workType = office.value;
+  }
+
+  createEmployeeCard(employee);
+}
+
+function createEmployeeCard(employee) {
+  let keys = Object.keys(employee);
+  let values = Object.values(employee);
+  let list = createElement("ul");
+  style(list, "style", "list-style-type:none;margin:0;padding:0;");
+  for (i = 0; i < keys.length; i++) {
+    let listItem = createElement("li");
+    listItem.textContent = `${keys[i]} : ${values[i]}`;
+    list.append(listItem);
+  }
+  let heading2 = createElement("h2");
+  heading2.innerText = `Employee details`;
+  b.append(heading2, list);
+}
+
+function style(a, b, c) {
+  return a.setAttribute(`${b}`, ` ${c}`);
+}
+function createElement(a) {
+  return document.createElement(`${a}`);
+} */
