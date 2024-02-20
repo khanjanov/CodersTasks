@@ -1,6 +1,6 @@
 //TODO show all titles
-/* https://jsonplaceholder.typicode.com/guide/ */
-let b = document.querySelector("body");
+/* https://jsonplaceholder.typicode.com//users/1/todos/ */
+/* let b = document.querySelector("body");
 
 fetch("https://jsonplaceholder.typicode.com//users/1/todos/")
   .then((res) => res.json())
@@ -10,4 +10,4 @@ fetch("https://jsonplaceholder.typicode.com//users/1/todos/")
       heading1.innerText = `${el.title}`;
       b.append(heading1);
     });
-  });
+  }); */

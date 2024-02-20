@@ -423,3 +423,96 @@ function style(a, b, c) {
 function createElement(a) {
   return document.createElement(`${a}`);
 } */
+
+//! 20.02.24 mentor online tasks
+
+//TODO  https://open.er-api.com/v6/latest/USD
+
+/* fetch("https://open.er-api.com/v6/latest/USD")
+  .then((res) => res.json())
+  .then((data) => {
+    let dataRates = data.rates;
+    for (i = 0; i < Object.keys(dataRates).length; i++) {
+      let b = document.querySelector("body");
+      let heading1 = document.createElement("h1");
+      heading1.innerHTML = `${Object.keys(dataRates)[i]} : ${Object.values(dataRates)[i]}`;
+      b.append(heading1);
+    }
+  }); */
+
+//TODO gender, name: First, last, location: street:number,name, country, email, registered:date,age, phone, picture:medium
+// https://randomuser.me/api/
+
+let b = document.querySelector("body");
+let idCard = createElement("div");
+let idCardPic = createElement("div");
+let idCardInfos = createElement("div");
+let pic = createElement("img");
+let list = createElement("ul");
+style(
+  b,
+  "height:100vh;display: flex;flex-direction:column;justify-content: center;align-items: center;background: linear-gradient(217deg, #833471, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #0984e3, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #00b894, rgba(0, 0, 255, 0) 70.71%);background-repeat: no-repeat;font-family:Lucida Console, Courier New;"
+);
+style(
+  idCard,
+  "width: 572px;height: 320px;display: grid;grid-template-columns: repeat(2,1fr);justify-content: center;align-items: center;gap: 12px;border-radius: 8px;box-shadow: -10px 10px 0px rgba(33, 33, 33, 1), -20px 20px 0px rgba(33, 33, 33, 0.7), -30px 30px 0px rgba(33, 33, 33, 0.4), -40px 40px 0px rgba(33, 33, 33, 0.1);;background:skyblue;"
+);
+style(
+  idCardPic,
+  "width: 100%;height:100%;display: flex;justify-content: center;align-items: center;padding:4px;"
+);
+style(
+  pic,
+  "width: 90%;border-radius:8px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;"
+);
+style(
+  idCardInfos,
+  "width:90%;height:90%;display:flex;flex-direction:column;justify-content:center;"
+);
+style(
+  list,
+  "display:flex;flex-direction:column;justify-content:center;list-style-type:none;margin:0;padding:0;gap:12px;"
+);
+idCardPic.append(pic);
+idCardInfos.append(list);
+idCard.append(idCardPic, idCardInfos);
+b.append(idCard);
+
+let user = {
+  name: String,
+  gender: String,
+  adress: String,
+  email: String,
+  registered: String,
+  phone: String,
+  profilePic: String,
+};
+fetch("https://randomuser.me/api/")
+  .then((res) => res.json())
+  .then((data) => {
+    let dataWeWant = data.results[0];
+    user.gender = `${dataWeWant.gender}`;
+    user.name = `${dataWeWant.name.title} ${dataWeWant.name.first} ${dataWeWant.name.last}`;
+    user.adress = `${dataWeWant.location.country}, ${dataWeWant.location.city}, ${dataWeWant.location.street.name} ${dataWeWant.location.street.number} `;
+    user.email = `${dataWeWant.email}`;
+    user.registered = `${dataWeWant.registered.date}`;
+    user.phone = `${dataWeWant.cell}`;
+    user.profilePic = `${dataWeWant.picture.large}`;
+    pic.src = user.profilePic;
+    let keys = Object.keys(user);
+    let values = Object.values(user);
+    for (i = 0; i < keys.length - 1; i++) {
+      let listItem = createElement("li");
+      listItem.textContent = `${keys[i]}: ${values[i]}`;
+      style(listItem, "color:#3b4d5d");
+      list.append(listItem);
+    }
+    idCardInfos.append(list);
+  });
+
+function style(a, b) {
+  return a.setAttribute("style", ` ${b}`);
+}
+function createElement(a) {
+  return document.createElement(`${a}`);
+}
