@@ -455,7 +455,7 @@ style(
 );
 style(
   idCard,
-  "width: 572px;height: 320px;display: grid;grid-template-columns: repeat(2,1fr);justify-content: center;align-items: center;gap: 12px;border-radius: 8px;box-shadow: -10px 10px 0px rgb(149 87 87), -20px 20px 0px rgb(43 191 157 / 70%), -30px 30px 0px rgba(33, 33, 33, 0.4), -40px 40px 0px rgb(186 159 6 / 26%);;background:skyblue;"
+  "width: 572px;height: 320px;display: grid;grid-template-columns: repeat(2,1fr);justify-content: center;align-items: center;gap: 12px;border-radius: 8px;box-shadow: -25px 10px 0px rgb(168 105 58 / 76%), 25px 20px 0px rgb(112 197 178 / 70%), -50px 30px 0px rgb(61 47 47 / 29%), 50px 40px 0px rgb(186 159 6 / 19%);background:skyblue;"
 );
 style(
   idCardPic,
@@ -516,4 +516,3 @@ function style(a, b) {
 function createElement(a) {
   return document.createElement(`${a}`);
 }
-
