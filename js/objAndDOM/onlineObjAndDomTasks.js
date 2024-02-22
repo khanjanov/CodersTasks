@@ -443,7 +443,7 @@ function createElement(a) {
 //TODO gender, name: First, last, location: street:number,name, country, email, registered:date,age, phone, picture:medium
 // https://randomuser.me/api/
 
-let b = document.querySelector("body");
+/* let b = document.querySelector("body");
 let idCard = createElement("div");
 let idCardPic = createElement("div");
 let idCardInfos = createElement("div");
@@ -515,4 +515,29 @@ function style(a, b) {
 }
 function createElement(a) {
   return document.createElement(`${a}`);
-}
+} */
+
+//! 21.02.24
+
+let baseURL = "http://localhost:3001";
+
+const postData = async () => {
+  const res = await fetch(baseURL + "/falan", {
+    method: "POST",
+    body: JSON.stringify({
+      id: "3",
+      text: "testing attention please",
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+};
+
+let b = document.querySelector("body");
+let btn = document.createElement("button");
+
+b.append(btn);
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  postData();
+});
