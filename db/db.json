@@ -1,12 +1,19 @@
 {
-  "falan": [
+  "todos": [
     {
-      "id": "1",
-      "text": "test1"
+      "id": "73",
+      "description": "try to edit todo",
+      "done": false
     },
     {
-      "id": "2",
-      "text": "test2"
+      "id": "9",
+      "description": "try to make todo done ( can't make it stay green, reload changes color to red )",
+      "done": false
+    },
+    {
+      "id": "97",
+      "description": "try to delete todo",
+      "done": false
     }
   ]
 }

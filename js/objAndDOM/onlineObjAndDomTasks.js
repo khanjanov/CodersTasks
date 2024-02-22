@@ -519,14 +519,14 @@ function createElement(a) {
 
 //! 21.02.24
 
-let baseURL = "http://localhost:3001";
+/* let baseURL = "http://localhost:3001";
 
 const postData = async () => {
   const res = await fetch(baseURL + "/falan", {
     method: "POST",
     body: JSON.stringify({
       id: "3",
-      text: "testing attention please",
+      text: "testing attention",
     }),
   });
   const data = await res.json();
@@ -540,4 +540,4 @@ b.append(btn);
 btn.addEventListener("click", (e) => {
   e.preventDefault();
   postData();
-});
+}); */
