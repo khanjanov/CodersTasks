@@ -148,6 +148,11 @@ async function createTodo() {
             li.remove();
           }
         });
+        changeSizeOnMouseEvent(
+          deleteBtn,
+          "border:none;border-radius:8px;padding: 4px 8px;color:gray;cursor:pointer;transform: scale(0.8);transition: linear 0.5s;",
+          "border:none;border-radius:8px;padding: 4px 8px;color:gray;cursor:pointer;transform: scale(1);transition: linear 0.5s;"
+        );
 
         //! done btn
         doneBtn.addEventListener("click", async (e) => {
@@ -180,6 +185,11 @@ async function createTodo() {
             );
           }
         });
+        changeSizeOnMouseEvent(
+          doneBtn,
+          "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;transform: scale(0.8);transition: linear 0.5s;",
+          "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;transform: scale(1);transition: linear 0.5s;"
+        );
 
         //! edit btn
         editBtn.addEventListener("click", async () => {
@@ -190,7 +200,7 @@ async function createTodo() {
               body: JSON.stringify({
                 id: `${el.id}`,
                 description: `${editInpt}`,
-                done: false,
+                done: el.done,
               }),
             });
             li.innerText = el.description;
@@ -199,6 +209,11 @@ async function createTodo() {
             alert("you can't add empty todo");
           }
         });
+        changeSizeOnMouseEvent(
+          editBtn,
+          "border:none;border-radius:8px;padding: 4px 8px;color:skyblue;cursor:pointer;transform: scale(0.8);transition: linear 0.5s;",
+          "border:none;border-radius:8px;padding: 4px 8px;color:skyblue;cursor:pointer;transform: scale(1);transition: linear 0.5s;"
+        );
 
         li.append(editBtn, doneBtn, deleteBtn);
         todoList.append(li);
@@ -240,3 +255,13 @@ deleteAllTodoBtn.addEventListener("click", async (e) => {
     todoContainer.remove();
   }
 });
+
+//! change size of buttons on mouse event
+function changeSizeOnMouseEvent(a, b, c) {
+  a.addEventListener("mouseover", () => {
+    a.setAttribute("style", b);
+  });
+  a.addEventListener("mouseout", () => {
+    a.setAttribute("style", c);
+  });
+}
