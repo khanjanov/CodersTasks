@@ -13,6 +13,8 @@ let todoContainer = document.createElement("div");
 let todoList = document.createElement("ul");
 let link = document.createElement("link");
 
+let haveTodo = false;
+
 //! just gathered them together
 function styleAndEtc() {
   link.setAttribute("rel", "stylesheet");
@@ -107,6 +109,9 @@ async function createTodo() {
   await fetch(baseURL + "/todos")
     .then((res) => res.json())
     .then((data) => {
+      if (data.length > 0) haveTodo = true;
+      else haveTodo = false;
+
       data.forEach((el) => {
         let description = el.description;
         const li = document.createElement("li");
@@ -115,7 +120,7 @@ async function createTodo() {
 
         li.setAttribute(
           "style",
-          "display: flex;justify-content: center;align-items: center;gap:8px;list-style-type:none;color:black;background:white;border-radius:8px;padding:12px"
+          `display: flex;justify-content: center;align-items: center;gap:8px;list-style-type:none;color:black;background:white;border-radius:8px;padding:12px;`
         );
         const deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = `<i class="far fa-trash-alt"></i>`;
@@ -127,7 +132,9 @@ async function createTodo() {
         doneBtn.innerHTML = `<i class="far fa-check-square"></i>`;
         doneBtn.setAttribute(
           "style",
-          "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;"
+          `border:none;border-radius:8px;padding: 4px 8px;color:${
+            el.done ? "green" : "red"
+          };cursor:pointer;`
         );
         doneBtn.type = "button";
         const editBtn = document.createElement("button");
@@ -155,10 +162,10 @@ async function createTodo() {
         );
 
         //! done btn
-        doneBtn.addEventListener("click", async (e) => {
+        doneBtn.addEventListener("click", (e) => {
           e.preventDefault();
           if (el.done === false) {
-            await fetch(baseURL + "/todos" + `/${el.id}`, {
+            fetch(baseURL + "/todos" + `/${el.id}`, {
               method: "PUT",
               body: JSON.stringify({
                 id: `${el.id}`,
@@ -171,7 +178,7 @@ async function createTodo() {
               "border:none;border-radius:8px;padding: 4px 8px;color:green !important;cursor:pointer;"
             );
           } else {
-            await fetch(baseURL + "/todos" + `/${el.id}`, {
+            fetch(baseURL + "/todos" + `/${el.id}`, {
               method: "PUT",
               body: JSON.stringify({
                 id: `${el.id}`,
@@ -187,8 +194,12 @@ async function createTodo() {
         });
         changeSizeOnMouseEvent(
           doneBtn,
-          "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;transform: scale(0.8);transition: linear 0.5s;",
-          "border:none;border-radius:8px;padding: 4px 8px;color:red;cursor:pointer;transform: scale(1);transition: linear 0.5s;"
+          `border:none;border-radius:8px;padding: 4px 8px;color:${
+            el.done ? "red" : "green"
+          };cursor:pointer;transform: scale(0.8);transition: linear 0.5s;`,
+          `border:none;border-radius:8px;padding: 4px 8px;color:${
+            el.done ? "green" : "red"
+          };cursor:pointer;transform: scale(1);transition: linear 0.5s;`
         );
 
         //! edit btn
@@ -241,7 +252,11 @@ inpt.addEventListener("keypress", (e) => {
 //! deleteAllTodoBtn eventlistener
 deleteAllTodoBtn.addEventListener("click", async (e) => {
   e.stopPropagation();
+
+  if (!haveTodo) return alert("There's nothing to delete");
+
   let result = confirm("do you wanna delete all todos permanently?");
+  
   if (result === true) {
     await fetch(baseURL + "/todos")
       .then((res) => res.json())
