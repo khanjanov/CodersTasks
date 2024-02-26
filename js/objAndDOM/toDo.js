@@ -1,4 +1,4 @@
-//TODO create TODO
+/* //TODO create TODO
 
 let b = document.querySelector("body");
 let container = document.createElement("div");
@@ -280,3 +280,4 @@ function changeSizeOnMouseEvent(a, b, c) {
     a.setAttribute("style", c);
   });
 }
+ */

@@ -541,3 +541,43 @@ btn.addEventListener("click", (e) => {
   e.preventDefault();
   postData();
 }); */
+
+//! 26.02.24 teacher's online task
+//TODO create random color
+let digits = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+];
+let b = document.querySelector("body");
+let btn = document.createElement("button");
+btn.setAttribute(
+  "style",
+  "position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background-color:cyan;padding:16px 28px;border-radius:12px;"
+);
+btn.innerText = "click me";
+b.append(btn);
+btn.addEventListener("click", generateColor);
+function generateColor() {
+  let combine = "#";
+  for (el of digits) {
+    combine += digits[Math.floor(Math.random() * digits.length)];
+    if (combine.length === 7) {
+      b.setAttribute("style", `background-color:${combine}`);
+      return;
+    }
+  }
+}
