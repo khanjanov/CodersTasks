@@ -544,7 +544,7 @@ btn.addEventListener("click", (e) => {
 
 //! 26.02.24 teacher's online task
 //TODO create random color
-let digits = [
+/* let digits = [
   "0",
   "1",
   "2",
@@ -580,4 +580,62 @@ function generateColor() {
       return;
     }
   }
-}
+} */
+//! mentor's online task
+
+//TODO use jQuery to take value from input
+
+$(document).ready(function () {
+  //create elements
+  $wrapper = $("<div>");
+  $input = $("<input>");
+  $btn = $("<button>");
+  $wrapperForInptBtn = $("<div>");
+  $parag = $("<p>");
+
+  // styling
+  $("*").css({
+    margin: "0",
+    padding: "0",
+    boxSizing: "border-box",
+  });
+  [$btn, $input].forEach((el) => {
+    el.css({
+      backgroundColor: "#64a2f9",
+      padding: "8px 24px",
+      border: "none",
+      borderRadius: "8px",
+      color: "wheat",
+    });
+  });
+  $wrapperForInptBtn.css({ display: "flex", gap: "8px" });
+  $wrapper.css({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "cyan",
+    padding: "16px 28px",
+    borderRadius: "12px",
+  });
+
+  // input's placeholder
+  $input.attr("placeholder", "type here...");
+
+  // add text to button
+  $btn.text("show");
+
+  // gather them together
+  $("body").append(
+    $wrapper.append([$wrapperForInptBtn.append([$input, $btn]), $parag])
+  );
+
+  // add event
+  $btn.click(function () {
+    $parag.text($input.val()).css("color", "wheat");
+  });
+});
